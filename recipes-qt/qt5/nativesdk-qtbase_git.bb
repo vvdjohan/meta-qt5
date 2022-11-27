@@ -36,13 +36,16 @@ SRC_URI += "\
     file://0009-Add-OE-specific-specs-for-clang-compiler.patch \
     file://0010-linux-clang-Invert-conditional-for-defining-QT_SOCKL.patch \
     file://0011-tst_qlocale-Enable-QT_USE_FENV-only-on-glibc.patch \
-    file://0012-mkspecs-common-gcc-base.conf-Use-I-instead-of-isyste.patch \
-    file://0013-Disable-ltcg-for-host_build.patch \
-    file://0014-Qt5GuiConfigExtras.cmake.in-cope-with-variable-path-.patch \
-    file://0015-corelib-Include-sys-types.h-for-uint32_t.patch \
-    file://0016-Define-QMAKE_CXX.COMPILER_MACROS-for-clang-on-linux.patch \
-    file://0017-qfloat16-check-for-__ARM_FP-2.patch \
-    file://0018-input-Make-use-of-timeval-portable-for-64bit-time_t.patch \
+    file://0012-Disable-ltcg-for-host_build.patch \
+    file://0013-Qt5GuiConfigExtras.cmake.in-cope-with-variable-path-.patch \
+    file://0014-corelib-Include-sys-types.h-for-uint32_t.patch \
+    file://0015-Define-QMAKE_CXX.COMPILER_MACROS-for-clang-on-linux.patch \
+    file://0016-tst_qpainter-FE_-macros-are-not-defined-for-every-pl.patch \
+    file://0017-Define-__NR_futex-if-it-does-not-exist.patch \
+    file://0018-Revert-Fix-workaround-in-pthread-destructor.patch \
+    file://0019-tst_QPluginLoader-Simplify-creating-a-fake-pointer-i.patch \
+    file://0021-rcc-Just-dcument-file-name-without-full-path-to-redu.patch \
+    file://0022-testlib-don-t-track-the-build-or-source-directories.patch \
 "
 
 # common for qtbase-native and nativesdk-qtbase
@@ -195,4 +198,4 @@ fakeroot do_generate_qt_environment_file() {
 do_generate_qt_environment_file[umask] = "022"
 addtask generate_qt_environment_file after do_install before do_package
 
-SRCREV = "a7a24784eeba6747d319eb911583bdd99ef38cdb"
+SRCREV = "358aebba7280d6d2b59b1f740747a4a3d1b7a54a"

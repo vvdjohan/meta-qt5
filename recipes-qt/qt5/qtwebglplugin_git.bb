@@ -18,4 +18,4 @@ do_configure_prepend() {
 
 EXTRA_QMAKEVARS_PRE += "${@bb.utils.contains('PACKAGECONFIG', 'qtdeclarative', 'CONFIG+=OE_QTDECLARATIVE_ENABLED', '', d)}"
 
-SRCREV = "11b83427d9770f50b5d8ec420ec810e393f3af8c"
+SRCREV = "e0a130b9a4d83f90e4b3965fd2644a6acc48cbc4"

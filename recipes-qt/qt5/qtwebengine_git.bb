@@ -142,6 +142,7 @@ QT_MODULE_BRANCH_CHROMIUM = "73-based"
 SRC_URI += " \
     ${QT_GIT}/qtwebengine-chromium.git;name=chromium;branch=${QT_MODULE_BRANCH_CHROMIUM};protocol=${QT_GIT_PROTOCOL};destsuffix=git/src/3rdparty \
     file://0001-Force-host-toolchain-configuration.patch \
+    file://0002-qmake.conf-lower-MODULE_VERSION-to-5.15.X.patch \
 "
 SRC_URI_append_libc-musl = "\
     file://0002-musl-don-t-use-pvalloc-as-it-s-not-available-on-musl.patch \

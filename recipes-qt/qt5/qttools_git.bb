@@ -44,13 +44,7 @@ EXTRA_QMAKEVARS_PRE += " \
     ${@bb.utils.contains('PACKAGECONFIG', 'qtwebkit', '', 'CONFIG+=noqtwebkit', d)} \
     ${@bb.utils.contains('PACKAGECONFIG', 'clang', 'CONFIG+=disable_external_rpath', 'CONFIG+=noqdoc', d)} \
 "
-EXTRA_QMAKEVARS_PRE_append_class-native = " CONFIG+=config_clang_done CONFIG-=config_clang"
-EXTRA_QMAKEVARS_PRE_append_class-nativesdk = " CONFIG+=config_clang_done CONFIG-=config_clang"
-EXTRA_QMAKEVARS_PRE_append_class-target = "\
-    ${@bb.utils.contains('PACKAGECONFIG', 'clang', 'CONFIG+=config_clang', 'CONFIG+=config_clang_done CONFIG-=config_clang', d)} \
-"
-
-SRCREV = "78f52a4027da110bf14468b575c7262b4d28d65e"
+SRCREV = "7fda805bf006e10648606ddd8482cc9aae7476cb"
 
 BBCLASSEXTEND = "native nativesdk"
 
