@@ -19,8 +19,6 @@ DEPENDS += " \
     glibc \
     hunspell \
     anthy \
-    libpinyin \
-    libchewing \
 "
 
 inherit cmake_qt5
