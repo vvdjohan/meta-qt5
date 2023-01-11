@@ -13,9 +13,9 @@ SRC_URI = "git://github.com/maliit/framework.git;branch=master \
            file://0001-Drop-tr1-namespace-its-not-there-in-c-11-and-newer.patch \
            file://0001-examples-plugins-Replace-obsolete-screenGeometry.patch \
            "
-
-SRCREV = "60b1b10de14f932420313c547ab801daf522d539"
-PV = "0.99.0+git${SRCPV}"
+           
+SRCREV = "${AUTOREV}"
+PV = "2.3.0+git${SRCPV}"
 
 
 PACKAGES =+ "${PN}-gtk"
