@@ -14,7 +14,7 @@ SRC_URI = "git://github.com/maliit/framework.git;branch=master \
            file://0001-examples-plugins-Replace-obsolete-screenGeometry.patch \
            "
            
-SRCREV = "${AUTOREV}"
+SRCREV = "812969485050b5329294b37648a11ba60e0be430"
 PV = "2.3.0+git${SRCPV}"
 
 
