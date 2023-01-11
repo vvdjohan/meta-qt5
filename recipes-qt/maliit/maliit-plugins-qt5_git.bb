@@ -14,7 +14,7 @@ SRC_URI = "git://github.com/maliit/keyboard.git;branch=master \
            file://0001-Do-not-use-tr1-namespace.patch \
           "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "678e44c8d8111ebf8b170212c07c455f4fcf730c"
 PV = "2.3.0+git${SRCPV}"
 
 
