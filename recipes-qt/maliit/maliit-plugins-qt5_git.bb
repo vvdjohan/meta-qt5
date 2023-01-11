@@ -1,8 +1,9 @@
 DESCRIPTION = "Plugins for a virtual keyboard for touch-screen based user interfaces"
 HOMEPAGE = "https://wiki.maliit.org/Main_Page"
 
-LICENSE = "BSD"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=f29b21caa8e460097bfad9c026a33621"
+LICENSE = "GPL-3.0"
+LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
+
 
 inherit qmake5
 
