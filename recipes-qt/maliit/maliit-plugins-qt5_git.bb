@@ -10,8 +10,8 @@ DEPENDS = "maliit-framework-qt5"
 
 RDEPENDS_${PN} += "qtsvg-plugins"
 
-SRC_URI = "git://github.com/maliit/keyboard.git;branch=master \
-           file://0001-Do-not-use-tr1-namespace.patch \
+SRC_URI = "\
+           git://github.com/maliit/keyboard.git;branch=master;protocol=https \
           "
 
 SRCREV = "678e44c8d8111ebf8b170212c07c455f4fcf730c"
