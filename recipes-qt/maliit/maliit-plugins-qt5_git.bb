@@ -7,6 +7,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 SRC_URI = "\
            git://github.com/maliit/keyboard.git;branch=master;protocol=https \
           "
+S = "${WORKDIR}/git"
 
 SRCREV = "678e44c8d8111ebf8b170212c07c455f4fcf730c"
 PV = "2.3.0+git${SRCPV}"
