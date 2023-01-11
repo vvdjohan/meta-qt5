@@ -29,7 +29,7 @@ inherit pkgconfig
 
 EXTRA_OECMAKE += "-Denable-presage=OFF"
 
-FILES:${PN} += " \
+FILES_${PN} += " \
     ${datadir}/glib-2.0/schemas/org.maliit.keyboard.maliit.gschema.xml \
     ${datadir}/metainfo/com.github.maliit.keyboard.metainfo.xml \
     ${datadir}/maliit/keyboard2/themes \
