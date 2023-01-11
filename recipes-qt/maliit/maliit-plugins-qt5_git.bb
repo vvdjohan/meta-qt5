@@ -4,13 +4,6 @@ HOMEPAGE = "https://wiki.maliit.org/Main_Page"
 LICENSE = "GPL-3.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
-
-inherit qmake5
-
-DEPENDS = "maliit-framework-qt5"
-
-RDEPENDS_${PN} += "qtsvg-plugins"
-
 SRC_URI = "\
            git://github.com/maliit/keyboard.git;branch=master;protocol=https \
           "
