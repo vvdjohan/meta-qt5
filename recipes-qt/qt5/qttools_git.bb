@@ -38,12 +38,12 @@ SRC_URI += "\
 
 # The same issue as in qtbase:
 # http://errors.yoctoproject.org/Errors/Build/44914/
-LDFLAGS:append:x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
+LDFLAGS_append_x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
 
 SRCREV = "eeb34aae03b9395c9b3b45ab7c4f3055d086e894"
 
 # Temporary work around for Qt5MultimediaConfig.cmake referencing non-existent videoeglvideonode directory
-do_install:append() {
+do_install_append() {
     install -d ${D}${OE_QMAKE_PATH_PLUGINS}/videoeglvideonode
 }
-FILES:${PN} += "${OE_QMAKE_PATH_PLUGINS}/videoeglvideonode"
+FILES_${PN} += "${OE_QMAKE_PATH_PLUGINS}/videoeglvideonode"
