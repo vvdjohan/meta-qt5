@@ -43,4 +43,4 @@ SRCREV = "eeb34aae03b9395c9b3b45ab7c4f3055d086e894"
 do_install:append() {
     install -d ${D}${OE_QMAKE_PATH_PLUGINS}/videoeglvideonode
 }
-FILES:${PN} += "${OE_QMAKE_PATH_PLUGINS}/videoeglvideonode"
+FILES_${PN} += "${OE_QMAKE_PATH_PLUGINS}/videoeglvideonode"
