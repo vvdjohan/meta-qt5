@@ -1,9 +1,7 @@
 require qt5.inc
 require qt5-git.inc
-require qt5-ptest.inc
 
-HOMEPAGE = "http://www.qt.io"
-LICENSE = "GFDL-1.3 & BSD & ( GPL-3.0 & The-Qt-Company-GPL-Exception-1.0 | The-Qt-Company-Commercial ) & ( GPL-2.0+ | LGPL-3.0 | The-Qt-Company-Commercial )"
+LICENSE = "GFDL-1.3 & BSD-3-Clause & ( GPL-3.0-only & The-Qt-Company-GPL-Exception-1.0 | The-Qt-Company-Commercial ) & ( GPL-2.0-or-later | LGPL-3.0-only | The-Qt-Company-Commercial )"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPL3;md5=e6a600fd5e1d9cbde2d983680233ad02 \
     file://LICENSE.GPL2;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
@@ -12,44 +10,40 @@ LIC_FILES_CHKSUM = " \
     file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 "
 
-DEPENDS += "qtbase qtdeclarative qtxmlpatterns"
-# Patches from https://github.com/meta-qt5/qttools/commits/b5.13
-# 5.13.meta-qt5.1
-SRC_URI += " \
-    file://0001-add-noqtwebkit-configuration.patch \
-    file://0002-linguist-tools-cmake-allow-overriding-the-location-f.patch \
-    file://0003-src.pro-Add-option-noqdoc-to-disable-qdoc-builds.patch \
+DEPENDS += "qtdeclarative"
+
+inherit pkgconfig
+
+PACKAGECONFIG ??= "gstreamer \
+                   ${@bb.utils.contains('DISTRO_FEATURES', 'alsa', 'alsa', '', d)} \
+                   ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio', '', d)}"
+PACKAGECONFIG[alsa] = "-alsa,-no-alsa,alsa-lib"
+PACKAGECONFIG[pulseaudio] = "-pulseaudio,-no-pulseaudio,pulseaudio"
+PACKAGECONFIG[openal] = "-feature-openal,-no-feature-openal,openal-soft"
+PACKAGECONFIG[gstreamer] = "-gstreamer 1.0,,gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-bad"
+PACKAGECONFIG[gstreamer010] = "-gstreamer 0.10,,gstreamer gst-plugins-base gst-plugins-bad"
+
+EXTRA_QMAKEVARS_CONFIGURE += "${PACKAGECONFIG_CONFARGS}"
+
+# Disable GStreamer if completely disabled
+EXTRA_QMAKEVARS_CONFIGURE += "${@bb.utils.contains_any('PACKAGECONFIG', 'gstreamer gstreamer010', '', '-no-gstreamer', d)}"
+
+CXXFLAGS += "${@bb.utils.contains('DISTRO_FEATURES', 'x11', '', '-DMESA_EGL_NO_X11_HEADERS=1', d)}"
+
+# Patches from https://github.com/meta-qt5/qtmultimedia/commits/b5.15
+# 5.15.meta-qt5.1
+SRC_URI += "\
+    file://0001-qtmultimedia-fix-a-conflicting-declaration.patch \
 "
 
-FILES_${PN}-tools += "${datadir}${QT_DIR_NAME}/phrasebooks"
-FILES_${PN}-examples = "${datadir}${QT_DIR_NAME}/examples"
+# The same issue as in qtbase:
+# http://errors.yoctoproject.org/Errors/Build/44914/
+LDFLAGS:append:x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
 
-PACKAGECONFIG ??= ""
-PACKAGECONFIG_append_toolchain-clang = " clang"
+SRCREV = "eeb34aae03b9395c9b3b45ab7c4f3055d086e894"
 
-PACKAGECONFIG[qtwebkit] = ",,qtwebkit"
-PACKAGECONFIG[clang] = ",,clang"
-
-COMPATIBLE_HOST_toolchain-clang_riscv32 = "null"
-COMPATIBLE_HOST_toolchain-clang_riscv64 = "null"
-
-export YOCTO_ALTERNATE_EXE_PATH = "${STAGING_BINDIR}/llvm-config"
-
-TOOLSTOBUILD += "linguist/lconvert linguist/lrelease linguist/lupdate pixeltool qtdiag qtpaths qtplugininfo"
-TOOLSTOBUILD += "${@bb.utils.contains('PACKAGECONFIG', 'clang', 'qdoc', '', d)}"
-TOOLSFORTARGET = "pixeltool qtdiag qtpaths qtplugininfo"
-TOOLSFORHOST = "linguist ${@bb.utils.contains('PACKAGECONFIG', 'clang', 'qdoc', '', d)}"
-
-EXTRA_QMAKEVARS_PRE += " \
-    ${@bb.utils.contains('PACKAGECONFIG', 'qtwebkit', '', 'CONFIG+=noqtwebkit', d)} \
-    ${@bb.utils.contains('PACKAGECONFIG', 'clang', 'CONFIG+=disable_external_rpath', 'CONFIG+=noqdoc', d)} \
-"
-SRCREV = "7fda805bf006e10648606ddd8482cc9aae7476cb"
-
-BBCLASSEXTEND = "native nativesdk"
-
-do_install_ptest() {
-    mkdir -p ${D}${PTEST_PATH}
-    t=${D}${PTEST_PATH}
-    cp ${B}/tests/auto/qtdiag/tst_tdiag $t
+# Temporary work around for Qt5MultimediaConfig.cmake referencing non-existent videoeglvideonode directory
+do_install:append() {
+    install -d ${D}${OE_QMAKE_PATH_PLUGINS}/videoeglvideonode
 }
+FILES:${PN} += "${OE_QMAKE_PATH_PLUGINS}/videoeglvideonode"
