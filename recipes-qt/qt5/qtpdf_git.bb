@@ -23,7 +23,7 @@ DEPENDS += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'libxcomposite libxcursor libxi libxrandr libxtst libxkbfile', '', d)} \
 "
 
-DEPENDS:append:libc-musl = " libexecinfo"
+DEPENDS_append_libc-musl = " libexecinfo"
 
 inherit pkgconfig
 
@@ -65,12 +65,12 @@ PACKAGECONFIG[pulseaudio] = "-feature-webengine-pulseaudio,-no-feature-webengine
 EXTRA_QMAKEVARS_CONFIGURE += "${PACKAGECONFIG_CONFARGS}"
 
 COMPATIBLE_MACHINE = "(-)"
-COMPATIBLE_MACHINE:x86 = "(.*)"
-COMPATIBLE_MACHINE:x86-64 = "(.*)"
-COMPATIBLE_MACHINE:armv6 = "(.*)"
-COMPATIBLE_MACHINE:armv7a = "(.*)"
-COMPATIBLE_MACHINE:armv7ve = "(.*)"
-COMPATIBLE_MACHINE:aarch64 = "(.*)"
+COMPATIBLE_MACHINE_x86 = "(.*)"
+COMPATIBLE_MACHINE_x86-64 = "(.*)"
+COMPATIBLE_MACHINE_armv6 = "(.*)"
+COMPATIBLE_MACHINE_armv7a = "(.*)"
+COMPATIBLE_MACHINE_armv7ve = "(.*)"
+COMPATIBLE_MACHINE_aarch64 = "(.*)"
 
 inherit qmake5
 inherit gettext
@@ -106,7 +106,7 @@ do_configure() {
         ${EXTRA_QMAKEVARS_CONFIGURE} -verbose
 }
 
-do_configure:prepend:libc-musl() {
+do_configure_prepend_libc-musl() {
         for f in `find ${S}/src/3rdparty/chromium/third_party/ffmpeg/chromium/config/Chromium/linux/ -name config.h -o -name config.asm`; do
                 sed -i -e "s:define HAVE_SYSCTL 1:define HAVE_SYSCTL 0:g" $f
         done
@@ -118,9 +118,9 @@ do_compile[progress] = "outof:^\[(\d+)/(\d+)\]\s+"
 FILES_${PN} += "${OE_QMAKE_PATH_QT_TRANSLATIONS} ${OE_QMAKE_PATH_QT_DATA}"
 
 # Chromium uses libpci to determine which optimizations/workarounds to apply
-RDEPENDS:${PN}:append:x86 = " libpci"
+RDEPENDS_${PN}_append_x86 = " libpci"
 
-RDEPENDS:${PN}-examples += " \
+RDEPENDS_${PN}-examples += " \
     ${PN}-qmlplugins \
     qtquickcontrols-qmlplugins \
     qtdeclarative-qmlplugins \
@@ -208,7 +208,7 @@ SRC_URI += " \
     file://0001-configure.json-remove-python2-dependency.patch \
     file://0002-gn.pro-do-not-try-to-statically-link-stdc.patch \
 "
-SRC_URI:append:toolchain-clang:runtime-llvm = " file://0003-Fix-build-with-clang.patch"
+SRC_URI_append_toolchain-clang_runtime-llvm = " file://0003-Fix-build-with-clang.patch"
 
 # These flags below go more into detail than qtwebengine's documentation
 PACKAGECONFIG[no-core] = "-no-build-qtwebengine-core,,"
