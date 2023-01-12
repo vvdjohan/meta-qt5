@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.LGPL;md5=5c917f6ce94ceb8d8d5e16e2fca5b9ad"
 
 inherit qmake5 qmake5_paths
 
-SRC_URI = "git://github.com/maliit/framework.git;branch=master \
+SRC_URI = "git://github.com/maliit/framework.git;nobranch=1;protocol=https \
            file://0001-Fix-MALIIT_INSTALL_PRF-to-allow-the-build-with-opene.patch \
            file://maliit-server.desktop \
            file://0001-config.pri-Use-O1-optimization-in-DEBUG-flags.patch \
@@ -14,8 +14,7 @@ SRC_URI = "git://github.com/maliit/framework.git;branch=master \
            file://0001-examples-plugins-Replace-obsolete-screenGeometry.patch \
            "
 
-SRCREV = "60b1b10de14f932420313c547ab801daf522d539"
-PV = "0.99.0+git${SRCPV}"
+SRCREV = "70bef706c5652f08f7bfcf5cdd1095ff8ed9aa88"
 
 S = "${WORKDIR}/git"
 
