@@ -13,17 +13,16 @@ LIC_FILES_CHKSUM = " \
     file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 "
 
-SRC_URI += " \
-    file://0001-tst_seatv4-Include-array.patch \
-    file://0002-Fix-compilation-of-linuxdmabuf-compositor-plugin.patch \
-    file://0003-Client-really-use-OpenGL-ES-2-API-for-decoration-bli.patch \
-"
+# Patches from https://github.com/meta-qt5/qtwayland/commits/b5.15
+# 5.15.meta-qt5.1
+SRC_URI += "file://0001-tst_seatv4-Include-array.patch"
 
 PACKAGECONFIG ?= " \
     wayland-client \
     wayland-server \
-    wayland-egl \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'wayland-egl', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'xcomposite-egl xcomposite-glx', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'wayland-vulkan-server-buffer', '', d)} \
 "
 PACKAGECONFIG_class-native ?= ""
 PACKAGECONFIG_class-nativesdk ?= ""
@@ -40,10 +39,11 @@ PACKAGECONFIG[wayland-egl] = "-feature-wayland-egl,-no-feature-wayland-egl,virtu
 PACKAGECONFIG[wayland-brcm] = "-feature-wayland-brcm,-no-feature-wayland-brcm,virtual/egl"
 PACKAGECONFIG[wayland-drm-egl-server-buffer] = "-feature-wayland-drm-egl-server-buffer,-no-feature-wayland-drm-egl-server-buffer,libdrm virtual/egl"
 PACKAGECONFIG[wayland-libhybris-egl-server-buffer] = "-feature-wayland-libhybris-egl-server-buffer,-no-feature-wayland-libhybris-egl-server-buffer,libhybris"
+PACKAGECONFIG[wayland-vulkan-server-buffer] = "-feature-wayland-vulkan-server-buffer,-no-feature-wayland-vulkan-server-buffer,vulkan-headers"
 
 EXTRA_QMAKEVARS_CONFIGURE += "${PACKAGECONFIG_CONFARGS}"
 
-SRCREV = "615aa208d131ab99e967725504fcb16fdda4ea83"
+SRCREV = "3cc17177b1b03053276eb6236fda137c588261a7"
 
 BBCLASSEXTEND =+ "native nativesdk"
 
