@@ -45,7 +45,7 @@ SRC_URI += "\
 LTO = ""
 
 # for syncqt
-RDEPENDS:${PN}-tools += "perl"
+RDEPENDS_${PN}-tools += "perl"
 
 inherit pkgconfig
 
@@ -194,9 +194,9 @@ QT_CONFIG_FLAGS += " \
     ${PACKAGECONFIG_CONFARGS} \
 "
 
-export CC_host:toolchain-clang = "clang"
-export CXX_host:toolchain-clang = "clang++"
-export LD_host:toolchain-clang = "clang++"
+export CC_host_toolchain-clang = "clang"
+export CXX_host_toolchain-clang = "clang++"
+export LD_host_toolchain-clang = "clang++"
 export CC_host ?= "gcc"
 export CXX_host ?= "g++"
 export LD_host ?= "g++"
