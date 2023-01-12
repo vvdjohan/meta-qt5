@@ -115,7 +115,7 @@ do_configure:prepend:libc-musl() {
 do_compile[progress] = "outof:^\[(\d+)/(\d+)\]\s+"
 
 # for /usr/share/qt5/qtwebengine_resources.pak
-FILES:${PN} += "${OE_QMAKE_PATH_QT_TRANSLATIONS} ${OE_QMAKE_PATH_QT_DATA}"
+FILES_${PN} += "${OE_QMAKE_PATH_QT_TRANSLATIONS} ${OE_QMAKE_PATH_QT_DATA}"
 
 # Chromium uses libpci to determine which optimizations/workarounds to apply
 RDEPENDS:${PN}:append:x86 = " libpci"
@@ -145,7 +145,7 @@ SRC_URI += " \
 "
 # Patches from https://github.com/meta-qt5/qtwebengine/commits/b5.15
 # 5.15.meta-qt5.15
-SRC_URI:append:libc-musl = "\
+SRC_URI_append_libc-musl = "\
     file://0003-musl-don-t-use-pvalloc-as-it-s-not-available-on-musl.patch \
     file://0004-musl-link-against-libexecinfo.patch \
     file://0005-mkspecs-Allow-builds-with-libc-glibc.patch \
@@ -170,7 +170,7 @@ SRC_URI += " \
 
 # Patches from https://github.com/meta-qt5/qtwebengine-chromium/commits/87-based
 # 87-based.meta-qt5.9
-SRC_URI:append:libc-musl = "\
+SRC_URI_append_libc-musl = "\
     file://chromium/0013-chromium-musl-sandbox-Define-TEMP_FAILURE_RETRY-if-n.patch;patchdir=src/3rdparty \
     file://chromium/0014-chromium-musl-Avoid-mallinfo-APIs-on-non-glibc-linux.patch;patchdir=src/3rdparty \
     file://chromium/0015-chromium-musl-include-fcntl.h-for-loff_t.patch;patchdir=src/3rdparty \
@@ -192,7 +192,7 @@ SRCREV = "${SRCREV_qtwebengine}"
 SRCREV_FORMAT = "qtwebengine_chromium"
 
 # WARNING: qtwebengine-5.5.99+5.6.0-rc+gitAUTOINC+3f02c25de4_779a2388fc-r0 do_package_qa: QA Issue: ELF binary '/OE/build/oe-core/tmp-glibc/work/i586-oe-linux/qtwebengine/5.5.99+5.6.0-rc+gitAUTOINC+3f02c25de4_779a2388fc-r0/packages-split/qtwebengine/usr/lib/libQt5WebEngineCore.so.5.6.0' has relocations in .text [textrel]
-INSANE_SKIP:${PN} += "textrel"
+INSANE_SKIP_${PN} += "textrel"
 
 ###
 ### This recipe's part above is mostly a copy of qtwebengine_git.bb.
