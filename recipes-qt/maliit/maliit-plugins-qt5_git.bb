@@ -9,7 +9,7 @@ SRC_URI = "\
           "
 S = "${WORKDIR}/git"
 
-SRCREV = "70d2cda129d33b23af0750ae75f6321a3435b352"
+SRCREV = "320d08b27ded451e8c5b850385c8642b4424d544"
 
 DEPENDS += " \
     maliit-framework-qt5 \
