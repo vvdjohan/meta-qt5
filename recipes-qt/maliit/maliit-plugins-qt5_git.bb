@@ -5,12 +5,11 @@ LICENSE = "GPL-3.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 SRC_URI = "\
-           git://github.com/maliit/keyboard.git;nobranch=master;protocol=https \
+           git://github.com/maliit/keyboard.git;nobranch=1;protocol=https \
           "
 S = "${WORKDIR}/git"
 
 SRCREV = "70d2cda129d33b23af0750ae75f6321a3435b352"
-PV = "2.1.0+git${SRCPV}"
 
 DEPENDS += " \
     maliit-framework-qt5 \
