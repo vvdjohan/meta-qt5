@@ -7,13 +7,13 @@ LIC_FILES_CHKSUM = "file://LICENSE.LGPL;md5=5c917f6ce94ceb8d8d5e16e2fca5b9ad"
 inherit qmake5 qmake5_paths
 
 SRC_URI = " \
-           git://github.com/maliit/framework.git;branch=master;protocol=https \
+           git://github.com/maliit/framework.git;branch=nobranch;protocol=https \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "812969485050b5329294b37648a11ba60e0be430"
-PV = "2.3.0+git${SRCPV}"
+SRCREV = "284a56297215bfa4b9febaf4e392508477bfcfcb"
+PV = "2.1.0+git${SRCPV}"
 
 DEPENDS += " \
     qtbase \
