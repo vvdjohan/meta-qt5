@@ -12,10 +12,10 @@ LIC_FILES_CHKSUM = " \
 
 DEPENDS += "qtdeclarative qtdeclarative-native"
 
-RDEPENDS:${PN}-dev = ""
+RDEPENDS_${PN}-dev = ""
 
 # The same issue as in qtbase:
 # http://errors.yoctoproject.org/Errors/Build/44912/
-LDFLAGS:append:x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
+LDFLAGS_append_x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
 
 SRCREV = "dfacc1706eaf9ec306e2f660be393ecffe9637fb"
