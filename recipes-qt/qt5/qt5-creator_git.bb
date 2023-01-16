@@ -15,7 +15,7 @@ LIC_FILES_CHKSUM = " \
 inherit qmake5 pkgconfig mime-xdg
 
 DEPENDS += "qtbase qtscript qtxmlpatterns qtx11extras qtdeclarative qttools qttools-native qtsvg chrpath-replacement-native zlib"
-DEPENDS:append:libc-musl = " libexecinfo"
+DEPENDS_append:libc-musl = " libexecinfo"
 
 SRCREV = "39ac7b1bf6add473026687003311b702742b6b21"
 PV = "4.15.2+git${SRCPV}"
@@ -48,7 +48,7 @@ PACKAGECONFIG[clang] = ",,clang"
 COMPATIBLE_HOST:toolchain-clang:riscv32 = "null"
 COMPATIBLE_HOST:toolchain-clang:riscv64 = "null"
 
-do_configure:append() {
+do_configure_append() {
     # Find native tools
     sed -i 's:${STAGING_BINDIR}.*/qdoc:${OE_QMAKE_PATH_EXTERNAL_HOST_BINS}/qdoc:g' ${B}/Makefile
     if [ -e ${B}/share/qtcreator/translations/Makefile ]; then
@@ -68,22 +68,22 @@ do_install() {
     fi
 }
 
-FILES:${PN} += " \
+FILES_${PN} += " \
     ${datadir}/qtcreator \
     ${datadir}/metainfo \
     ${datadir}/icons \
     ${libdir}${QT_DIR_NAME}/qtcreator \
 "
 
-FILES:${PN}-dev += " \
+FILES_${PN}-dev += " \
     ${libdir}${QT_DIR_NAME}/qtcreator/*${SOLIBSDEV} \
 "
 
-RDEPENDS:${PN} += "perl python3"
-RCONFLICTS:${PN} = "qt-creator"
+RDEPENDS_${PN} += "perl python3"
+RCONFLICTS_${PN} = "qt-creator"
 
 # To give best user experience out of the box..
-RRECOMMENDS:${PN} += " \
+RRECOMMENDS_${PN} += " \
     packagegroup-qt5-toolchain-target \
     binutils \
     ccache \
@@ -98,7 +98,7 @@ RRECOMMENDS:${PN} += " \
 "
 
 # ERROR: qt5-creator-4.5.1-r0 do_package_qa: QA Issue: No GNU_HASH in the elf binary: '/OE/build/oe-core/tmp-glibc/work/core2-64-oe-linux/qt5-creator/4.5.1-r0/packages-split/qt5-creator/usr/lib/qt5/qtcreator/libqbscore.so.1.10.1'
-INSANE_SKIP:${PN} += "ldflags"
+INSANE_SKIP_${PN} += "ldflags"
 
 inherit features_check
 REQUIRED_DISTRO_FEATURES ?= "x11 opengl"
