@@ -171,7 +171,7 @@ QT_CONFIG_FLAGS_GOLD = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', '-
 #
 # http://errors.yoctoproject.org/Errors/Details/150329/
 # QT_CONFIG_FLAGS_GOLD:x86 = "-no-use-gold-linker"
-# LDFLAGS:append:x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
+# LDFLAGS_append_x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
 
 # since the upgrade to 5.12.2 this got worse, with gold enabled configure will no longer pass the test for xlib
 # because with full paths to libraries since qtbase commit 521a85395 it fails to link with
@@ -181,9 +181,9 @@ QT_CONFIG_FLAGS_GOLD = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', '-
 # resulting in do_configure failure:
 # http://errors.yoctoproject.org/Errors/Details/237856/
 QT_CONFIG_FLAGS_GOLD = "-no-use-gold-linker"
-LDFLAGS:append = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
+LDFLAGS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
 
-LDFLAGS:append:riscv64 = " -pthread"
+LDFLAGS_append_riscv64 = " -pthread"
 
 QT_CONFIG_FLAGS += " \
     ${QT_CONFIG_FLAGS_GOLD} \
