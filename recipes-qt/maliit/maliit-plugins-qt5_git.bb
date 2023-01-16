@@ -36,4 +36,5 @@ FILES_${PN} += " \
     ${datadir}/maliit/keyboard2/devices \
     ${libdir}/maliit/keyboard2/languages \
     ${libdir}/maliit/keyboard2/qml \
-    ${libdir}/maliit/plugins/libmaliit-keyboard-plugin.so 
+    ${libdir}/maliit/plugins/libmaliit-keyboard-plugin.so \
+"
