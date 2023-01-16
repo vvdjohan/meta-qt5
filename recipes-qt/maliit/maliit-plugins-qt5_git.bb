@@ -1,40 +1,39 @@
 DESCRIPTION = "Plugins for a virtual keyboard for touch-screen based user interfaces"
 HOMEPAGE = "https://wiki.maliit.org/Main_Page"
 
-LICENSE = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=f29b21caa8e460097bfad9c026a33621"
+LICENSE = "GPL-3.0"
+LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
-inherit qmake5
+SRC_URI = "\
+           git://github.com/maliit/keyboard.git;nobranch=1;protocol=https \
+          "
+S = "${WORKDIR}/git"
 
-DEPENDS = "maliit-framework-qt5"
+SRCREV = "320d08b27ded451e8c5b850385c8642b4424d544"
 
+DEPENDS += " \
+    maliit-framework-qt5 \
+    qtbase \
+    qtmultimedia \
+    glibc \
+    hunspell \
+    anthy \
+"
+
+inherit cmake_qt5
+inherit gsettings
 inherit pkgconfig
 
-RDEPENDS:${PN} += "qtsvg-plugins"
+EXTRA_OECMAKE += "-Denable-presage=OFF"
 
-SRC_URI = "git://github.com/maliit/plugins.git;branch=master;protocol=https \
-           file://0001-Do-not-use-tr1-namespace.patch \
-          "
-
-SRCREV = "c6a348592607248a771a3dde5a0e33dc3c433a2a"
-PV = "0.99.0+git${SRCPV}"
-
-EXTRA_QMAKEVARS_PRE = "\
-    PREFIX=${prefix} \
-    MALIIT_INSTALL_PRF=${QMAKE_MKSPEC_PATH}/mkspecs/features \
-    MALIIT_PLUGINS_DATA_DIR=${datadir} \
-    LIBDIR=${libdir} \
-    CONFIG+=nodoc \
-"
-
-# tests fail to build with gcc12/clang
-EXTRA_QMAKEVARS_PRE:append = " CONFIG+=notests"
-
-FILES:${PN} += "\
-    ${libdir}/maliit \
-    ${datadir} \
-"
-
-S= "${WORKDIR}/git"
-
-EXTRA_OEMAKE += "INSTALL_ROOT=${D}"
+FILES_${PN} += " \
+    ${datadir}/glib-2.0/schemas/org.maliit.keyboard.maliit.gschema.xml \
+    ${datadir}/metainfo/com.github.maliit.keyboard.metainfo.xml \
+    ${datadir}/maliit/keyboard2/themes \
+    ${datadir}/maliit/keyboard2/styles \
+    ${datadir}/maliit/keyboard2/icons \
+    ${datadir}/maliit/keyboard2/images \
+    ${datadir}/maliit/keyboard2/devices \
+    ${libdir}/maliit/keyboard2/languages \
+    ${libdir}/maliit/keyboard2/qml \
+    ${libdir}/maliit/plugins/libmaliit-keyboard-plugin.so 
