@@ -118,7 +118,7 @@ do_compile[progress] = "outof:^\[(\d+)/(\d+)\]\s+"
 FILES_${PN} += "${OE_QMAKE_PATH_QT_TRANSLATIONS} ${OE_QMAKE_PATH_QT_DATA}"
 
 # Chromium uses libpci to determine which optimizations/workarounds to apply
-RDEPENDS_${PN}:append:x86 = " libpci"
+RDEPENDS_${PN}_append_x86 = " libpci"
 
 RDEPENDS_{PN}-examples += " \
     ${PN}-qmlplugins \
@@ -209,7 +209,7 @@ SRC_URI += " \
     file://0001-configure.json-remove-python2-dependency.patch \
     file://0002-gn.pro-do-not-try-to-statically-link-stdc.patch \
 "
-SRC_URI:append:toolchain-clang:runtime-llvm = " file://0003-Fix-build-with-clang.patch"
+SRC_URI_append_toolchain-clang_runtime-llvm = " file://0003-Fix-build-with-clang.patch"
 
 # These flags below go more into detail than qtwebengine's documentation
 PACKAGECONFIG[no-core] = "-no-build-qtwebengine-core,,"
