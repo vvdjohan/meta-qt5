@@ -12,6 +12,8 @@ SRC_URI = " \
 
 S = "${WORKDIR}/git"
 
+SRCREV = "812969485050b5329294b37648a11ba60e0be430"
+
 DEPENDS += " \
     qtbase \
     qtdeclarative \
