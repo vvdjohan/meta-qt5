@@ -61,7 +61,7 @@ RRECOMMENDS_${PN} = " \
     ${PN}-plugins \
     ${PN}-qmlplugins \
     "
-RRECOMMENDS_${PN}:class-native = ""
+RRECOMMENDS_${PN}_class-native = ""
 
 RRECOMMENDS_${PN}-dev = " \
     ${PN} \
