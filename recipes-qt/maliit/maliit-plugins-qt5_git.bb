@@ -2,7 +2,7 @@ DESCRIPTION = "Plugins for a virtual keyboard for touch-screen based user interf
 HOMEPAGE = "https://wiki.maliit.org/Main_Page"
 
 LICENSE = "GPL-3.0"
-LIC_FILES_CHKSUM = "file://COPYING;md5=5c917f6ce94ceb8d8d5e16e2fca5b9ad"
+LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 SRC_URI = "\
            git://github.com/maliit/keyboard.git;nobranch=1;protocol=https \
