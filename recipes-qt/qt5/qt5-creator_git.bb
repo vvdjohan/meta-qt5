@@ -15,7 +15,7 @@ LIC_FILES_CHKSUM = " \
 inherit qmake5 pkgconfig mime-xdg
 
 DEPENDS += "qtbase qtscript qtxmlpatterns qtx11extras qtdeclarative qttools qttools-native qtsvg chrpath-replacement-native zlib"
-DEPENDS_append:libc-musl = " libexecinfo"
+DEPENDS_append_libc-musl = " libexecinfo"
 
 SRCREV = "39ac7b1bf6add473026687003311b702742b6b21"
 PV = "4.15.2+git${SRCPV}"
@@ -27,7 +27,7 @@ SRC_URI = " \
     file://0002-clangformat-Fix-build-with-LLVM-13.patch \
     file://0003-clangformat-Fix-build-with-LLVM-13.patch \
 "
-SRC_URI:append:libc-musl = " file://0001-Link-with-libexecinfo-on-musl.patch"
+SRC_URI_append_libc-musl = " file://0001-Link-with-libexecinfo-on-musl.patch"
 
 S = "${WORKDIR}/git"
 
@@ -39,14 +39,14 @@ EXTRA_QMAKEVARS_PRE += " \
 EXTRANATIVEPATH += "chrpath-native"
 
 PACKAGECONFIG ??= ""
-PACKAGECONFIG:append:toolchain-clang = " clang"
+PACKAGECONFIG_append_toolchain-clang = " clang"
 
 # Important note: In case clang was added to qttools' PACKAGECONFIG, it has to
 # be added here too - otherwise build fails trying to link native clang libraries
 PACKAGECONFIG[clang] = ",,clang"
 
-COMPATIBLE_HOST:toolchain-clang:riscv32 = "null"
-COMPATIBLE_HOST:toolchain-clang:riscv64 = "null"
+COMPATIBLE_HOST_toolchain-clang_riscv32 = "null"
+COMPATIBLE_HOST_toolchain-clang_riscv64 = "null"
 
 do_configure_append() {
     # Find native tools
