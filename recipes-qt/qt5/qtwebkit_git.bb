@@ -38,8 +38,8 @@ inherit python3native
 # | {standard input}: Assembler messages:
 # | {standard input}:106: Error: invalid immediate: 983040 is out of range
 # | {standard input}:106: Error: value of 983040 too large for field of 2 bytes at 146
-ARM_INSTRUCTION_SET:armv4 = "arm"
-ARM_INSTRUCTION_SET:armv5 = "arm"
+ARM_INSTRUCTION_SET_armv4 = "arm"
+ARM_INSTRUCTION_SET_armv5 = "arm"
 
 # https://bugzilla.yoctoproject.org/show_bug.cgi?id=9474
 # https://bugs.webkit.org/show_bug.cgi?id=159880
