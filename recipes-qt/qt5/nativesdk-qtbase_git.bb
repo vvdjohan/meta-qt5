@@ -65,12 +65,12 @@ SRC_URI += " \
 
 PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
 
-FILES:${PN}-dev += " \
+FILES_${PN}-dev += " \
     ${OE_QMAKE_PATH_ARCHDATA}/mkspecs \
     ${OE_QMAKE_PATH_LIBS}/*.prl \
 "
 
-FILES:${PN} += " \
+FILES_${PN} += " \
     ${SDKPATHNATIVE}/environment-setup.d \
     ${OE_QMAKE_PATH_PLUGINS} \
     ${OE_QMAKE_PATH_LIBS}/metatypes \
