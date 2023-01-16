@@ -21,8 +21,8 @@ SRC_URI += " \
 "
 SRC_URI_append_class-native = " ${@bb.utils.contains('PACKAGECONFIG', 'clang', 'file://0004-Force-native-build-of-qt-help-tools-as-qhelpgenerato.patch', '', d)}"
 
-FILES:${PN}-tools += "${datadir}${QT_DIR_NAME}/phrasebooks"
-FILES:${PN}-examples = "${datadir}${QT_DIR_NAME}/examples"
+FILES_${PN}-tools += "${datadir}${QT_DIR_NAME}/phrasebooks"
+FILES_${PN}-examples = "${datadir}${QT_DIR_NAME}/examples"
 
 PACKAGECONFIG ??= ""
 PACKAGECONFIG_append_toolchain-clang = " clang"
