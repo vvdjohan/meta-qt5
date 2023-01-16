@@ -42,13 +42,13 @@ do_install_append() {
 }
 
 
-PACKAGES:prepend = "${PN}-examples ${PN}-features ${PN}-plugins "
-FILES:${PN}-examples = "${bindir}/*"
-FILES:${PN}-features = "${prefix}/features"
-FILES:${PN}-plugins = "${prefix}/plugins/designer/*.so"
-FILES:${PN}-doc += "${prefix}/doc"
+PACKAGES_prepend = "${PN}-examples ${PN}-features ${PN}-plugins "
+FILES_${PN}-examples = "${bindir}/*"
+FILES_${PN}-features = "${prefix}/features"
+FILES_${PN}-plugins = "${prefix}/plugins/designer/*.so"
+FILES_${PN}-doc += "${prefix}/doc"
 
-INSANE_SKIP:${PN}-plugins += "libdir"
-INSANE_SKIP:${PN}-dbg += "libdir"
+INSANE_SKIP_${PN}-plugins += "libdir"
+INSANE_SKIP_${PN}-dbg += "libdir"
 
-RPROVIDES:${PN}-dev = "libqwt-qt5-dev"
+RPROVIDES_${PN}-dev = "libqwt-qt5-dev"
