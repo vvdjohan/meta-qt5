@@ -56,3 +56,6 @@ do_install_append_class-nativesdk() {
 SRCREV = "0d60f81bf61a69bc859a269ae562b2610d224e02"
 
 BBCLASSEXTEND =+ "native nativesdk"
+
+ FILES_${PN} += "${libdir}/*"
+ FILES_${PN}-dev = "${libdir}/* ${includedir}"
