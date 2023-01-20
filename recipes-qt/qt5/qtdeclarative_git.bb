@@ -58,4 +58,5 @@ SRCREV = "0d60f81bf61a69bc859a269ae562b2610d224e02"
 BBCLASSEXTEND =+ "native nativesdk"
 
 FILES_${PN} += "${libdir}/*"
-FILES_${PN}-dev = "${libdir}/* ${includedir}"
+INSANE_SKIP_${PN} = "dev-so"
+# FILES_${PN}-dev = "${libdir}/* ${includedir}"
