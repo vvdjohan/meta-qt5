@@ -56,3 +56,6 @@ BBCLASSEXTEND =+ "native nativesdk"
 # The same issue as in qtbase:
 # http://errors.yoctoproject.org/Errors/Details/152641/
 LDFLAGS_append = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
+
+FILES_${PN} += "${libdir}/*"
+INSANE_SKIP_${PN} = "dev-so"
