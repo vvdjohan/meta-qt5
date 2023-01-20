@@ -47,5 +47,5 @@ do_install_append() {
     install -d ${D}${OE_QMAKE_PATH_PLUGINS}/videoeglvideonode
 }
 FILES_${PN} += "${OE_QMAKE_PATH_PLUGINS}/videoeglvideonode \
-               "${libdir}/*"
+                ${libdir}/*"
 INSANE_SKIP_${PN} = "dev-so"
