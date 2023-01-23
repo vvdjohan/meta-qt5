@@ -23,6 +23,7 @@ DEPENDS += " \
 
 inherit cmake_qt5
 inherit gsettings
+inherit gettext
 inherit pkgconfig
 
 EXTRA_OECMAKE += "-Denable-presage=OFF"
