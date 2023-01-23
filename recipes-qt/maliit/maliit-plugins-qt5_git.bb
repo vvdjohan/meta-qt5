@@ -25,7 +25,7 @@ DEPENDS += " \
     anthy \
 "
 
-RDEPENDS += " \
+RDEPENDS_${PN} += " \
     qtgraphicaleffects-qmlplugins \
     qtquickcontols-qmlplugins \
     qtdeclarative-qmlplugins \
