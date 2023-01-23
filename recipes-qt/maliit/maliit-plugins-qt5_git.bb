@@ -15,6 +15,7 @@ DEPENDS += " \
     maliit-framework-qt5 \
     qtbase \
     qtmultimedia \
+    qtquickcontrols2 \
     glibc \
     hunspell \
     anthy \
