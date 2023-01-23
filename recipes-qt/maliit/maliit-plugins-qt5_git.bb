@@ -20,12 +20,15 @@ DEPENDS += " \
     qtquickcontrols \
     qtquickcontrols2 \
     qtgraphicaleffects \
-    qtgraphicaleffects-qmlplugins \
-    qtquickcontols-qmlplugins \
-    qtdeclarative-qmlplugins \
     glibc \
     hunspell \
     anthy \
+"
+
+RDEPENDS += " \
+    qtgraphicaleffects-qmlplugins \
+    qtquickcontols-qmlplugins \
+    qtdeclarative-qmlplugins \
 "
 
 inherit cmake_qt5
