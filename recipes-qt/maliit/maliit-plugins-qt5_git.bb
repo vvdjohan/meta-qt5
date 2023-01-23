@@ -27,7 +27,6 @@ DEPENDS += " \
 RDEPENDS_${PN} += " \
     qtbase-tools \
     qtgraphicaleffects-qmlplugins \
-    qtquickcontols-qmlplugins \
     qtdeclarative-qmlplugins \
 "
 
