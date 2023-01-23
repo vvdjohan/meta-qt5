@@ -19,3 +19,6 @@ RDEPENDS_${PN}-dev = ""
 LDFLAGS_append_x86 = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-gold', ' -fuse-ld=bfd ', '', d)}"
 
 SRCREV = "dfacc1706eaf9ec306e2f660be393ecffe9637fb"
+
+FILES_${PN} += "${libdir}/*"
+INSANE_SKIP_${PN} = "dev-so"
