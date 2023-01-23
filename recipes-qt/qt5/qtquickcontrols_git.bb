@@ -20,6 +20,3 @@ FILES_${PN}-qmlplugins += " \
 SRCREV = "be434da57b1631a29fad3d9c4557f251ca13b71f"
 
 FILES_${PN} += "${libdir}/*"
-FILES_${PN}-dev_append = " \
-    ${libdir}/* ${includedir} \
-"
