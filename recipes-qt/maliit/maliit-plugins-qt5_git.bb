@@ -16,7 +16,6 @@ DEPENDS += " \
     qtbase \
     qtdeclarative \
     qtmultimedia \
-    qtquickcontrols \
     qtquickcontrols2 \
     qtgraphicaleffects \
     glibc \
