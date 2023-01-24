@@ -16,8 +16,6 @@ DEPENDS += " \
     qtbase \
     qtdeclarative \
     qtmultimedia \
-    qtquickcontrols2 \
-    qtgraphicaleffects \
     glibc \
     hunspell \
     anthy \
