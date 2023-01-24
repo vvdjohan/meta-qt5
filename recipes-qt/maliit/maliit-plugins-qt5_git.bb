@@ -23,11 +23,11 @@ DEPENDS += " \
     anthy \
 "
 
-RDEPENDS_${PN} += " \
-    qtbase-tools \
-    qtgraphicaleffects-qmlplugins \
-    qtdeclarative-qmlplugins \
-"
+# RDEPENDS_${PN} += " \
+#    qtbase-tools \
+#    qtgraphicaleffects-qmlplugins \
+#    qtdeclarative-qmlplugins \
+#"
 
 inherit cmake_qt5
 inherit gsettings
