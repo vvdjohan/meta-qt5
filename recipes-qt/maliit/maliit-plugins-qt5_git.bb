@@ -18,17 +18,14 @@ DEPENDS += " \
     qtmultimedia \
     qtquickcontrols \
     qtquickcontrols2 \
-    qtgraphicaleffects \
     glibc \
     hunspell \
     anthy \
 "
 
-# RDEPENDS_${PN} += " \
-#    qtbase-tools \
-#    qtgraphicaleffects-qmlplugins \
-#    qtdeclarative-qmlplugins \
-#"
+RDEPENDS_${PN} += " \
+    qtgraphicaleffects \
+"
 
 inherit cmake_qt5
 inherit gsettings
