@@ -14,8 +14,10 @@ SRCREV = "678e44c8d8111ebf8b170212c07c455f4fcf730c"
 DEPENDS += " \
     maliit-framework-qt5 \
     qtbase \
+    qtbase-tools \
     qtdeclarative \
     qtmultimedia \
+    qtquickcontrols \
     qtquickcontrols2 \
     qtgraphicaleffects \
     glibc \
