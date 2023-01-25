@@ -25,6 +25,8 @@ DEPENDS += " \
 
 RDEPENDS_${PN} += " \
     qtgraphicaleffects \
+    qtbase-tools \
+    
 "
 
 inherit cmake_qt5
